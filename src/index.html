@@ -1,59 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CUBE CSS with Tailwind CSS</title>
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/cube.css" />
-</head>
-<body>
-  <main class="wrapper">
-    <article class="flow">
-      <h1>CUBE CSS with Tailwind CSS</h1>
-      <p>An example of how you can use <a href="https://github.com/tailwindlabs/tailwindcss">Tailwind CSS</a> as the U (utilities) in
-      <a href="https://cube.fyi/">CUBE CSS</a>. It also uses the following:</p>
-      <ol>
-        <li><a href="https://every-layout.dev/">Every Layout</a> layouts as compositional layouts (the C in CUBE CSS)</li>
-        <li><a href="https://utopia.fyi/">Utopia</a> for fluid type and spacing scales</li>
-        <li><a href="https://postcss.org/">Post CSS</a> to bundle up CSS files</li>
-      </ol>
-      <p><a href="https://github.com/hankchizljaw/CUBE-with-tailwind">Check out the source.</a></p>
-      <h2>Fluid type and space</h2>
-      <p>This is already being fluidly spaced using <a href="https://utopia.fyi/">Utopia</a>, <a href="https://github.com/hankchizljaw/CUBE-with-tailwind/blob/main/src/css/global.css">global styles</a> <em>and</em> a <a href="https://piccalil.li/quick-tip/flow-utility/">flow utility</a>. Job done. Let’s render the type scale for fun though.</p>
-      <div class="box flow">
-        <div class="text-base">Fringilla Vestibulum Risus Nullam Tristique</div>
-        <div class="text-size-1">Fringilla Vestibulum Risus Nullam Tristique</div>
-        <div class="text-size-2">Fringilla Vestibulum Risus Nullam Tristique</div>
-        <div class="text-size-3">Fringilla Vestibulum Risus Nullam Tristique</div>
-        <div class="text-size-4">Fringilla Vestibulum Risus Nullam Tristique</div>
-        <div class="text-size-5">Fringilla Vestibulum Risus Nullam Tristique</div>
-      </div>
-      <h2>Every Layout Compositions</h2>
-      <p>I’m not a fan of breakpoint-based layout and as a co-author of <a href="https://every-layout.dev/">Every Layout</a>, it probably comes as no surprise I use those in projects. Here's a couple of handy ones.</p>
-      <h3><a href="https://every-layout.dev/layouts/sidebar/">Sidebar</a></h3>
-      <div class="sidebar">
-        <div class="box">I am the sidebar</div>
-        <div class="box">I am the content that has a sidebar.</div>
-      </div>
-      <h3><a href="https://every-layout.dev/layouts/switcher/">Switcher</a></h3>
-      <div class="switcher">
-        <div class="box">We stack</div>
-        <div class="box">When there is not enough space for us to be inline.</div>
-      </div>
-      <h3><a href="https://every-layout.dev/layouts/cluster/">Cluster</a></h3>
-      <div class="cluster">
-        <div class="box">Items that cluster</div>
-        <div class="box">But stack where space is limited</div>
-        <div class="box">Aenean Commodo Vestibulum</div>
-        <div class="box">Ornare Lorem Pharetra</div>
-        <div class="box">Fusce dapibus, tellus ac cursus commodo</div>
-        <div class="box">Ipsum Etiam Tristique Quam</div>
-      </div>
-      <hr />
-      <p><a href="https://github.com/hankchizljaw/CUBE-with-tailwind">Check out the source.</a></p>
-    </article>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CUBE CSS with Tailwind CSS</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/cube.css" />
+  </head>
+  <body>
+    <main class="wrapper">
+      <article class="flow">
+        <h1>CUBE CSS with Tailwind CSS</h1>
+
+        <section>
+          <h2>Attention:</h2>
+          <p>
+            <em>
+              A challenge for me in this project is that if we’re going to run with this
+              approach, it’s looking we can’t really use Sass, which I am a fan of for
+              keeping my CSS nice and organised. The way I see it though is that you need
+              to meet each other in the middle in these situations, so I’ll pass-up Sass,
+              just like the other developers are passing-up using Tailwind for
+              everything</em
+            >
+          </p>
+
+          <p>
+            <em>
+              What I want to really avoid is the PostCSS pretending to be Sass setup—which
+              is very possible—but oh-so-fragile. I’ve had awful experiences with this
+              too. Instead, I’ll be recommending that we lean into CSS Custom Properties.
+              We could use Tailwind’s @apply to apply utilities in our components (Blocks
+              in CUBE CSS), but that in my opinion is some potentially expensive technical
+              debt. Mainly because I can already see issues with how Tailwind might clash
+              with upcoming CSS features, such as @layer.</em
+            >
+          </p>
+
+          <p>
+            <em>
+              In the space of very little time, I managed to roll-out a little generator
+              that takes Tailwind config groups and generates CSS Custom Properties. This
+              is a good start and could rather easily create a solid system for creating
+              reusable tokenised CSS—even if—or even, when—Tailwind is no longer
+              preferable to the wider team.</em
+            >
+          </p>
+          Source:
+          https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
+        </section>
+
+        <p>
+          An example of how you can use
+          <a href="https://github.com/tailwindlabs/tailwindcss">Tailwind CSS</a> as the U
+          (utilities) in <a href="https://cube.fyi/">CUBE CSS</a>. It also uses the
+          following:
+        </p>
+        <ol>
+          <li>
+            <a href="https://every-layout.dev/">Every Layout</a> layouts as compositional
+            layouts (the C in CUBE CSS)
+          </li>
+          <li>
+            <a href="https://utopia.fyi/">Utopia</a> for fluid type and spacing scales
+          </li>
+          <li><a href="https://postcss.org/">Post CSS</a> to bundle up CSS files</li>
+        </ol>
+        <p>
+          <a href="https://github.com/hankchizljaw/CUBE-with-tailwind"
+            >Check out the source.</a
+          >
+        </p>
+        <h2>Fluid type and space</h2>
+        <p>
+          This is already being fluidly spaced using
+          <a href="https://utopia.fyi/">Utopia</a>,
+          <a
+            href="https://github.com/hankchizljaw/CUBE-with-tailwind/blob/main/src/css/global.css"
+            >global styles</a
+          >
+          <em>and</em> a
+          <a href="https://piccalil.li/quick-tip/flow-utility/">flow utility</a>. Job
+          done. Let’s render the type scale for fun though.
+        </p>
+        <div class="box flow">
+          <div class="text-base">Fringilla Vestibulum Risus Nullam Tristique</div>
+          <div class="text-size-1">Fringilla Vestibulum Risus Nullam Tristique</div>
+          <div class="text-size-2">Fringilla Vestibulum Risus Nullam Tristique</div>
+          <div class="text-size-3">Fringilla Vestibulum Risus Nullam Tristique</div>
+          <div class="text-size-4">Fringilla Vestibulum Risus Nullam Tristique</div>
+          <div class="text-size-5">Fringilla Vestibulum Risus Nullam Tristique</div>
+        </div>
+        <h2>Every Layout Compositions</h2>
+        <p>
+          I’m not a fan of breakpoint-based layout and as a co-author of
+          <a href="https://every-layout.dev/">Every Layout</a>, it probably comes as no
+          surprise I use those in projects. Here's a couple of handy ones.
+        </p>
+        <h3><a href="https://every-layout.dev/layouts/sidebar/">Sidebar</a></h3>
+        <div class="sidebar">
+          <div class="box">I am the sidebar</div>
+          <div class="box">I am the content that has a sidebar.</div>
+        </div>
+        <h3><a href="https://every-layout.dev/layouts/switcher/">Switcher</a></h3>
+        <div class="switcher">
+          <div class="box">We stack</div>
+          <div class="box">When there is not enough space for us to be inline.</div>
+        </div>
+        <h3><a href="https://every-layout.dev/layouts/cluster/">Cluster</a></h3>
+        <div class="cluster">
+          <div class="box">Items that cluster</div>
+          <div class="box">But stack where space is limited</div>
+          <div class="box">Aenean Commodo Vestibulum</div>
+          <div class="box">Ornare Lorem Pharetra</div>
+          <div class="box">Fusce dapibus, tellus ac cursus commodo</div>
+          <div class="box">Ipsum Etiam Tristique Quam</div>
+        </div>
+        <hr />
+        <p>
+          <a href="https://github.com/hankchizljaw/CUBE-with-tailwind"
+            >Check out the source.</a
+          >
+        </p>
+      </article>
+    </main>
+  </body>
 </html>
