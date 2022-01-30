@@ -2,7 +2,13 @@
 
 ⚠️ **THIS IS VERY MUCH A PROTOTYPE AND LIKELY BROKEN** ⚠️
 
-👀 **DEMO: <https://cube-css-with-tailwind.netlify.app/>** 👀
+**Attention:**  
+_A challenge for me in this project is that if we’re going to run with this approach, it’s looking we can’t really use Sass, which I am a fan of for keeping my CSS nice and organised. The way I see it though is that you need to meet each other in the middle in these situations, so I’ll pass-up Sass, just like the other developers are passing-up using Tailwind for everything._
+
+_What I want to really avoid is the PostCSS pretending to be Sass setup—which is very possible—but oh-so-fragile. I’ve had awful experiences with this too. Instead, I’ll be recommending that we lean into CSS Custom Properties. We could use Tailwind’s @apply to apply utilities in our components (Blocks in CUBE CSS), but that in my opinion is some potentially expensive technical debt. Mainly because I can already see issues with how Tailwind might clash with upcoming CSS features, such as @layer._
+
+_In the space of very little time, I managed to roll-out a little generator that takes Tailwind config groups and generates CSS Custom Properties. This is a good start and could rather easily create a solid system for creating reusable tokenised CSS—even if—or even, when—Tailwind is no longer preferable to the wider team._  
+Source: https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
 
 An example of how you can use [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) as the U (utilities) in
 [CUBE CSS](https://cube.fyi/). It also uses the following:
